@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string># set defaultCStringEncoding to UTF-8
+chdiff - &lt;(__CF_USER_TEXT_ENCODING=$UID:0x8000100:0x8000100 pbpaste)
+</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^@H</string>
+	<key>name</key>
+	<string>Document / Selection With Clipboard</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>4D41EEB9-F977-4B4A-9060-45C63C420463</string>
+</dict>
+</plist>

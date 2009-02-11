@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>#
+# $Id: Revision....plist 3075 2006-04-22 20:20:01Z aparajita $
+#
+
+require_cmd "${TM_SVN:=svn}" "If you have installed svn, then you need to either update your &lt;tt&gt;PATH&lt;/tt&gt; or set the &lt;tt&gt;TM_SVN&lt;/tt&gt; shell variable (e.g. in Preferences / Advanced)"
+
+require_cmd chdiff "You must install Changes terminal support."
+
+# See if the current file is under svn control
+FILE=`basename "$TM_FILEPATH"`
+INFO_LINES=`svn info "$FILE" 2&gt;&amp;1 | grep "^Path\: .*\$" | wc -l`
+
+if [ $INFO_LINES -eq 0 ]; then
+	echo "The current file is not under subversion control"
+	exit_show_tool_tip
+fi
+
+revs=$("$TM_SVN" log -q "$TM_FILEPATH"|grep -v '^-*$' \
+	2&gt; &gt;(CocoaDialog progressbar --indeterminate \
+		--title "Diff Revision in Changes…" \
+		--text "Retrieving List of Revisions…" \
+	))
+
+revs=`osascript&lt;&lt;END
+	set AppleScript's text item delimiters to {"\n","\r"}
+	tell app "SystemUIServer"
+		activate
+		set ourList to (every text item of "$revs")
+		if the count of items in ourList is 0 then
+			display dialog "No older revisions of file '$(basename "$TM_FILEPATH")' found" buttons ("Close")
+			set the result to false
+		else
+			choose from list ourList with prompt "Compare '$(basename "$TM_FILEPATH")' with older revision:"
+		end if
+	end tell
+END`
+
+# exit if user canceled
+if [[ $revs = "false" ]]; then
+	osascript -e 'tell app "TextMate" to activate' &amp;&gt;/dev/null &amp;	exit_discard
+fi
+
+REV=`echo "$revs" | tr '\r' '\n' | awk -F '|' '{ print substr($1, 2) }'`
+"$TM_BUNDLE_SUPPORT/bin/changesshim.sh" $REV -</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@H</string>
+	<key>name</key>
+	<string>Revision...</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>01FA3436-012D-4E6C-8514-1ED6A7725C43</string>
+</dict>
+</plist>
