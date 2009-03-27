@@ -12,11 +12,8 @@
 	<dict>
 		<key>items</key>
 		<array>
-			<string>EF0075DA-5B66-4918-99F3-B7B976F2C7B1</string>
-			<string>142985FD-D04B-477E-8A87-445BC3803720</string>
-			<string>01FA3436-012D-4E6C-8514-1ED6A7725C43</string>
-			<string>'E16D293E-DF2F-4459-A63E-493AE045E409</string>
-			<string>C57460D0-B032-4DF2-8F3C-4888E291A0CF</string>
+			<string>CA722DCE-26C4-46BE-8D5A-B0FFBDEDA91B</string>
+			<string>2FB7DD0B-E73E-4494-BA0B-F030AE6DA16D</string>
 			<string>------------------------------------</string>
 			<string>4D41EEB9-F977-4B4A-9060-45C63C420463</string>
 			<string>D0C17B76-2DEE-4F62-8E81-6E5774329C66</string>
@@ -25,12 +22,27 @@
 			<string>037F0BE9-9121-4929-B44A-FCFE10281CA6</string>
 		</array>
 		<key>submenus</key>
-		<dict/>
+		<dict>
+			<key>2FB7DD0B-E73E-4494-BA0B-F030AE6DA16D</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>EF0075DA-5B66-4918-99F3-B7B976F2C7B1</string>
+					<string>142985FD-D04B-477E-8A87-445BC3803720</string>
+					<string>01FA3436-012D-4E6C-8514-1ED6A7725C43</string>
+					<string>'E16D293E-DF2F-4459-A63E-493AE045E409</string>
+					<string>C57460D0-B032-4DF2-8F3C-4888E291A0CF</string>
+				</array>
+				<key>name</key>
+				<string>Subversion Specific</string>
+			</dict>
+		</dict>
 	</dict>
 	<key>name</key>
 	<string>Changes</string>
 	<key>ordering</key>
 	<array>
+		<string>CA722DCE-26C4-46BE-8D5A-B0FFBDEDA91B</string>
 		<string>EF0075DA-5B66-4918-99F3-B7B976F2C7B1</string>
 		<string>142985FD-D04B-477E-8A87-445BC3803720</string>
 		<string>01FA3436-012D-4E6C-8514-1ED6A7725C43</string>
