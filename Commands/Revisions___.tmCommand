@@ -70,6 +70,6 @@ revs=( $revs )
 	<key>output</key>
 	<string>discard</string>
 	<key>uuid</key>
-	<string>'E16D293E-DF2F-4459-A63E-493AE045E409</string>
+	<string>E16D293E-DF2F-4459-A63E-493AE045E409</string>
 </dict>
 </plist>
