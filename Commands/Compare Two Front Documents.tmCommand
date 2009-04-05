@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string># Compare the two frontmost documents
+
+# This is the way it _ought_ to work
+# $f1=osascript -e 'tell app "TextMate" to return path of document 1'
+# $f2=osascript -e 'tell app "TextMate" to return path of document 2'
+
+# Get the paths to the two frontmost documents
+f1=$(osascript&lt;&lt;END
+tell application "TextMate"
+	set theFile to path of document 1
+	set the result to POSIX path of theFile
+end tell
+END)
+
+f2=$(osascript&lt;&lt;END
+tell application "TextMate"
+	set theFile to path of document 2
+	set the result to POSIX path of theFile
+end tell
+END)
+
+# And send them too the comparison tool
+# diff -u "$f1" "$f2"
+# opendiff "$f1" "$f2"
+# bbdiff --ignore-spaces "$f1" "$f2"
+chdiff "$f1" "$f2"</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@H</string>
+	<key>name</key>
+	<string>Compare Two Front Documents</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>ECA9BDDC-D507-4F7C-991E-67F929150095</string>
+</dict>
+</plist>
